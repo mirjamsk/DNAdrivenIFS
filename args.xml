@@ -1,0 +1,14 @@
+<args>
+	<InputFiles> 
+		<item>HIVmarkov.txt</item>
+		<item>MethanocalMarkov.txt</item>
+	</InputFiles>
+
+	<OutputFile>outputSimilitudes.txt </OutputFile>
+
+	<GenerationNumber> 15 </GenerationNumber>
+	<PopulationSize> 100 </PopulationSize>
+	<CrossoverFactor> 0.2 </CrossoverFactor>
+	<MutationFactor> 0.2 </MutationFactor>
+	<FitnessFunction>  manhattan </FitnessFunction>
+</args>
