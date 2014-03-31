@@ -7,12 +7,12 @@ from Population import Population
 import random
 #import argparse
 from Fitness import Fitness
+from Selection import Selection
 from argsParser import argsParser
 
 #def run(numberOfGenerations, populationSize, crossoverFactor, mutationFactor, input1, input2, outputFile):
-def run (args):
-    p = Population(args.populationSize, args.input1, args.input2)
-    p.evaluateAll()
+def run ( p, args):
+
     for i in range(0, args.numberOfGenerations):
 
         ##crossover
@@ -35,7 +35,7 @@ def run (args):
             print j , ". best, fitness: " , best[j][0]
         print"**End od run ", i , "**"
 
-
+    
     #write out the best Similitude/Index pair to the output
     f = open(args.outputFile, "w");
     data = ""
@@ -81,8 +81,15 @@ def run (args):
 def main():
     args = argsParser()
     args.parse('args.xml')
+    #set fitness function
     Fitness.setDistanceFunction(args.fitnessFunction)
-    run (args)
+    #set selectionOperator
+    Selection.setSelectionOperator(args.selection)
+    
+    p = Population(args.populationSize, args.input1, args.input2)
+    #set selection operator
+    p.evaluateAll()
+    run (p, args)
     
 if __name__ == '__main__':
     main()

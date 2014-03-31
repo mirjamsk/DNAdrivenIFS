@@ -1,7 +1,7 @@
 import random
 import copy
 from Chromosome import Chromosome
-
+from Selection import Selection
 
 
 class Population():
@@ -32,6 +32,10 @@ class Population():
     def addChromosome(self, chromosome):
         chromosome.evaluateSelf(self.codons1, self.codons2)
         self.chromosomes.append(chromosome)
+        
+    def randomizeChromosome(self, index):
+        self.chromosomes[index] = Chromosome()
+        self.chromosomes[index].evaluateSelf(self.codons1, self.codons2)
     
     def getChromosome(self, index):
         return self.chromosomes[index]
@@ -101,15 +105,7 @@ class Population():
             chromosome.evaluateSelf(self.codons1 , self.codons2)   
 
     def selection(self):
-        tempChromosomes = []
-        for i in range (0, self.populationSize):
-            t1 = self.getChromosome(int(random.uniform(0, len(self.chromosomes))))
-            t2 = self.getChromosome(int(random.uniform(0, len(self.chromosomes))))
-            if t1.getFitness() > t2.getFitness():
-                tempChromosomes.append(t1)
-            else:
-                tempChromosomes.append(t2)
-        self.chromosomes = copy.deepcopy(tempChromosomes)
+        self.chromosomes = Selection.selection(self)
         
                        
                             

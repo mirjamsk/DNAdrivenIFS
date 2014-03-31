@@ -20,7 +20,7 @@ class argsParser(object):
         self.crossoverFactor = 0.2
         self.mutationFactor = 0.2
         self.fitnessFunction = "euclidean"
-        
+        self.selection = "tournament"
     def parse(self, file):
 
         try:
@@ -34,12 +34,14 @@ class argsParser(object):
             if root.find('CrossoverFactor') is not None: self.crossoverFactor = float(root.find('CrossoverFactor').text.strip())
             if root.find('MutationFactor') is not None: self.mutationFactor = float(root.find('MutationFactor').text.strip())
             if root.find('FitnessFunction') is not None: self.fitnessFunction = root.find('FitnessFunction').text.strip()
+            if root.find('Selection') is not None: self.selection = root.find('Selection').text.strip()
             self.printaj()
 
         except IOError:
             print "Error in argsParser.parse: File does not appear to exist."
           
     def printaj(self):
+        print "Using: "
         print self.input1 
         print self.input2
         print self.outputFile 
@@ -48,3 +50,4 @@ class argsParser(object):
         print self.crossoverFactor 
         print self.mutationFactor
         print self.fitnessFunction
+        print self.selection

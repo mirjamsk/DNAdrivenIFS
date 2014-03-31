@@ -10,5 +10,6 @@
 	<PopulationSize> 100 </PopulationSize>
 	<CrossoverFactor> 0.2 </CrossoverFactor>
 	<MutationFactor> 0.2 </MutationFactor>
-	<FitnessFunction>  manhattan </FitnessFunction>
+	<FitnessFunction>  euclidean </FitnessFunction>
+	<Selection>  elimination </Selection>
 </args>
