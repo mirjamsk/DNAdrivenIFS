@@ -21,6 +21,7 @@ class argsParser(object):
         self.mutationFactor = 0.2
         self.fitnessFunction = "euclidean"
         self.selection = "tournament"
+        self.elitism = 0
     def parse(self, file):
 
         try:
@@ -35,6 +36,7 @@ class argsParser(object):
             if root.find('MutationFactor') is not None: self.mutationFactor = float(root.find('MutationFactor').text.strip())
             if root.find('FitnessFunction') is not None: self.fitnessFunction = root.find('FitnessFunction').text.strip()
             if root.find('Selection') is not None: self.selection = root.find('Selection').text.strip()
+            if root.find('Elitism') is not None: self.elitism = int(root.find('Elitism').text.strip())
             self.printaj()
 
         except IOError:
@@ -42,12 +44,13 @@ class argsParser(object):
           
     def printaj(self):
         print "Using: "
-        print self.input1 
-        print self.input2
-        print self.outputFile 
-        print  self.numberOfGenerations 
-        print self.populationSize
-        print self.crossoverFactor 
-        print self.mutationFactor
-        print self.fitnessFunction
-        print self.selection
+        print "Input file1: " + self.input1 
+        print "Input file2: " + self.input2
+        print "Output file: " +self.outputFile 
+        print "Number of Generations: %d " %self.numberOfGenerations 
+        print "Population size: %d " %self.populationSize
+        print "Crossover factor: %f " %self.crossoverFactor 
+        print "Mutation factor: %f " %self.mutationFactor
+        print "Fitness function: " + self.fitnessFunction
+        print "Selection operator: " + self.selection
+        print "Elitism: %d " %self.elitism

@@ -28,7 +28,7 @@ class Test(unittest.TestCase):
     def testManhattanDistance(self):
         p1 = (10,3)
         p2 = (8,6)
-        Fitness.setDistanceFunction(Fitness.manhattanDistance)
+        Fitness.setDistanceFunction("manhattan")
         self.assertEqual(Fitness.getFitnessValue(p1,p2),5,
                          "test ManhattanDistance is: %f, but should be %f" %(Fitness.getFitnessValue(p1,p2), 5))
 

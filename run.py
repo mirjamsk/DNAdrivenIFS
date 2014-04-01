@@ -18,21 +18,23 @@ def run ( p, args):
         ##crossover
         for j in range (0, int(args.crossoverFactor*args.populationSize)):                              
             p.crossover(int(random.uniform(0, args.populationSize)), int(random.uniform(0, args.populationSize)))
+            
+        p.chromosomes.sort(key=lambda x: x.getFitness(), reverse= True)
+
 
         ##mutation
         for j in range (0, int(args.mutationFactor*args.populationSize)):    
             p.mutation(int(random.uniform(0, args.populationSize)))
 
+        p.chromosomes.sort(key=lambda x: x.getFitness(), reverse= True)
+        
         ##selection
         p.selection()
 
-        ##print best 5
-        best= []
-        for j in range(len(p.chromosomes)):
-            best.append(( p.getChromosome(j).getFitness(), j))
-        best.sort(key=lambda x: x[0], reverse= True )
+        ## sort and print best 5
+        p.chromosomes.sort(key=lambda x: x.getFitness(), reverse= True)
         for j in range(5):
-            print j , ". best, fitness: " , best[j][0]
+            print j , ". best, fitness: " , p.getChromosome(j).getFitness()
         print"**End od run ", i , "**"
 
     
@@ -40,14 +42,14 @@ def run ( p, args):
     f = open(args.outputFile, "w");
     data = ""
     
-    for similitude in p.chromosomes[best[0][1]].getAllSimilitudesCopy():
+    for similitude in p.getChromosome(0).getAllSimilitudesCopy():
         for s in similitude:
             data += str(s) + " "
         data+="\n"
         
     data +="#\n"
     
-    for index in p.chromosomes[best[0][1]].getIndexesCopy():
+    for index in p.getChromosome(0).getIndexesCopy():
             data += str(index) + " "
     
     f.write(data);
@@ -81,13 +83,14 @@ def run ( p, args):
 def main():
     args = argsParser()
     args.parse('args.xml')
-    #set fitness function
+    # set fitness function
     Fitness.setDistanceFunction(args.fitnessFunction)
-    #set selectionOperator
+    # set selectionOperator
     Selection.setSelectionOperator(args.selection)
+    # set if elitist
+    Selection.setElitism(args.elitism)
     
     p = Population(args.populationSize, args.input1, args.input2)
-    #set selection operator
     p.evaluateAll()
     run (p, args)
     
