@@ -4,13 +4,13 @@
 		<item>MethanocalMarkov.txt</item>
 	</InputFiles>
 
-	<OutputFile>outputSimilitudesManhTourElit.txt </OutputFile>
+	<OutputFile>outputSimilitudesManhTour.txt </OutputFile>
 
-	<GenerationNumber> 20 </GenerationNumber>
+	<GenerationNumber> 250 </GenerationNumber>
 	<PopulationSize> 100 </PopulationSize>
-	<CrossoverFactor> 0.2 </CrossoverFactor>
-	<MutationFactor> 0.2 </MutationFactor>
-	<FitnessFunction>  euclidean </FitnessFunction>
+	<CrossoverFactor> 0.3 </CrossoverFactor>
+	<MutationFactor> 0.5 </MutationFactor>
+	<FitnessFunction>  manhattan </FitnessFunction>
 	<Selection>  tournament </Selection>
 	<Elitism> 1 </Elitism>
 </args>
