@@ -19,15 +19,10 @@ def run ( p, args):
         for j in range (0, int(args.crossoverFactor*args.populationSize)):                              
             p.crossover(int(random.uniform(0, args.populationSize)), int(random.uniform(0, args.populationSize)))
             
-        p.chromosomes.sort(key=lambda x: x.getFitness(), reverse= True)
-
-
         ##mutation
         for j in range (0, int(args.mutationFactor*args.populationSize)):    
             p.mutation(int(random.uniform(0, args.populationSize)))
 
-        p.chromosomes.sort(key=lambda x: x.getFitness(), reverse= True)
-        
         ##selection
         p.selection()
 
@@ -35,7 +30,7 @@ def run ( p, args):
         p.chromosomes.sort(key=lambda x: x.getFitness(), reverse= True)
         for j in range(5):
             print j , ". best, fitness: " , p.getChromosome(j).getFitness()
-        print"**End od run ", i , "**"
+        print"**End of run ", i , "**"
 
     
     #write out the best Similitude/Index pair to the output
