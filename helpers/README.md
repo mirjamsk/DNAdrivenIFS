@@ -7,7 +7,7 @@ Pomocne python skripte
 + generateMarkovOutput.py
 + generateRandomDNA.py
 + sampleData
- + HIVgenome.txt
+ + [HIVgenome.txt][1]
  + MethanocaldococcusJannaschii.txt 
 
 <br>
