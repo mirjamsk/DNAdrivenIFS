@@ -7,7 +7,7 @@ Pomocne python skripte
 + generateMarkovOutput.py
 + generateRandomDNA.py
 + sampleData
- + [HIVgenome.txt][1]
+ + [HIVgenome.txt](http://www.ncbi.nlm.nih.gov/nuccore/9629357?report=fasta)
  + MethanocaldococcusJannaschii.txt 
 
 <br>
@@ -67,4 +67,3 @@ python generateRandomDNA.py  -o [file] -l n  #where n is an int
 + http://www.ncbi.nlm.nih.gov/
 
 
-[1]:(http://www.ncbi.nlm.nih.gov/nuccore/9629357?report=fasta)
