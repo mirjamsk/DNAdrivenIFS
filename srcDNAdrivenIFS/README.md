@@ -1,5 +1,5 @@
-implementacija DNA driven IFS
-==
+##implementacija DNA driven IFS
 
-program napisan u  [processing] (http://wiki.processing.org/w/Main_Page) jeziku/okuženju
+
+program napisan u  [Processing] (http://wiki.processing.org/w/Main_Page) jeziku/okuženju
 
