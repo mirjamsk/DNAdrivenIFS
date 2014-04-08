@@ -24,3 +24,8 @@ Duplim klikom na ***appDNAdrivenIFS.bat*** pokrece se program i iscrtava se frak
 Program, osim što prikaže fraktal, sprema i 2 slike istog u ***pics*** direktorij. 
 + prva  *singleDNA.tif* sprema sliku fraktala generiranog ulaznom datotekom  *DNAsequence1.txt*
 + druga *bothDNA.tif* sprema sliku oba ulaza
+
+
+==
+
+implementacija: [srcDNAdrivenIFS](https://github.com/mirjamsk/DNAdrivenIFS/blob/master/srcDNAdrivenIFS)
