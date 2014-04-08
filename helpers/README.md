@@ -10,12 +10,9 @@ Pomocne python skripte
  + HIVgenome.txt
  + MethanocaldococcusJannaschii.txt 
 
+<br>
 
 #### Čemu i kako?
-
-######sampleData
-U poddirektoriju *sampleData* nalaze se .txt datoteke sa genomima: [HIV][1] i  Methanococcus jannaschii
-
 
 
 ######cleanDNAseq.py
