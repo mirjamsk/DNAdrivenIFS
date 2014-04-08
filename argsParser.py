@@ -1,15 +1,6 @@
-'''
-Created on 31. 3. 2014.
-
-@author: Monsieur
-'''
 import xml.etree.ElementTree as ET
 
 class argsParser(object):
-    '''
-    classdocs
-    '''
-
 
     def __init__(self):
         self.input1= None
@@ -20,28 +11,95 @@ class argsParser(object):
         self.crossoverFactor = 0.2
         self.mutationFactor = 0.2
         self.fitnessFunction = "euclidean"
+        self.p = 3
         self.selection = "tournament"
         self.elitism = 0
-    def parse(self, file):
-
+    
+    def parse(self, f):
         try:
-            tree = ET.parse(file)
+            tree = ET.parse(f)
             root = tree.getroot()
             self.input1 = root.find('InputFiles')[0].text.strip()
             self.input2 = root.find('InputFiles')[1].text.strip()
             if root.find('OutputFile') is not None: self.outputFile = root.find('OutputFile').text.strip()
-            if root.find('GenerationNumber') is not None: self.numberOfGenerations = int(root.find('GenerationNumber').text.strip())
-            if root.find('PopulationSize') is not None: self.populationSize = int(root.find('PopulationSize').text.strip())
-            if root.find('CrossoverFactor') is not None: self.crossoverFactor = float(root.find('CrossoverFactor').text.strip())
-            if root.find('MutationFactor') is not None: self.mutationFactor = float(root.find('MutationFactor').text.strip())
-            if root.find('FitnessFunction') is not None: self.fitnessFunction = root.find('FitnessFunction').text.strip()
-            if root.find('Selection') is not None: self.selection = root.find('Selection').text.strip()
+            if root.find('GenerationNumber') is not None: self.assignGenerationInput(root.find('GenerationNumber').text.strip())
+            if root.find('PopulationSize') is not None: self.assignPopulationInput(root.find('PopulationSize').text.strip())
+            if root.find('CrossoverFactor') is not None: self.assignCrossoverInput(root.find('CrossoverFactor').text.strip())
+            if root.find('MutationFactor') is not None: self.assignMutationInput(root.find('MutationFactor').text.strip())
+            if root.find('FitnessFunction') is not None: self.assignFitnessFunction(root.find('FitnessFunction').text.strip())
+            if root.find('Selection') is not None: self.assignSelectionOperator(root.find('Selection').text.strip())
             if root.find('Elitism') is not None: self.elitism = int(root.find('Elitism').text.strip())
+            if root.find('p') is not None: self.p = int(root.find('p').text.strip())
+            
             self.printaj()
 
         except IOError:
             print "Error in argsParser.parse: File does not appear to exist."
           
+    def assignGenerationInput(self, inputStr):
+        try: 
+            self.numberOfGenerations = int(inputStr)
+        except  ValueError:
+            self.numberOfGenerations = 10
+            print "Exception: number of generations: \'%s\' could not be converted to an in" %inputStr
+            print "Using the default value: %d" %self.numberOfGenerations
+            
+            
+    def assignPopulationInput(self, inputStr):
+        try: 
+            self.populationSize = int(inputStr)
+        except  ValueError:
+            self.populationSize = 100
+            print "Exception: population size: \'%s\' could not be converted to an int" %inputStr
+            print "Using the default value: %d" %self.populationSize
+    
+    
+    def assignCrossoverInput(self, inputStr):
+        try: 
+            self.crossoverFactor = float(inputStr)
+        except  ValueError:
+            self.crossoverFactor = 0.2
+            print "Exception: crossover factor: \'%s\' could not be converted to a float" %inputStr
+            print "Using the default value: %f" %self.crossoverFactor
+        
+        
+    def assignMutationInput(self, inputStr):
+        try: 
+            self.mutationFactor = float(inputStr)
+        except  ValueError:
+            self.mutationFactor = 0.2
+            print "Exception: mutation factor: \'%s\' could not be converted to a float" %inputStr
+            print "Using the default value: %f" %self.mutationFactor
+    
+    
+    def assignFitnessFunction(self, inputStr):
+        if inputStr == "euclidean" or inputStr == "manhattan" or inputStr == "minkowski" :
+            self.fitnessFunction = inputStr
+        else :
+            self.fitnessFunction = "euclidean"
+            print "Exception: no such fitness function: \'%s\'" %inputStr
+            print "Using the default fitness function: %s" %self.fitnessFunction
+            
+    
+    
+    def assignSelectionOperator(self, inputStr):
+        if inputStr == "tournament" or inputStr == "elimination" :
+            self.selection = inputStr
+        else :
+            self.selection = "tournament"
+            print "Exception: no such selection operator: \'%s\'" %inputStr
+            print "Using the default selection operator: %s" %self.selection
+            
+    def assignElitism(self, inputStr):
+        if inputStr == "0" or inputStr == "1" :
+            self.elitism = int(inputStr)
+        else :
+            self.elitism = 0
+            print "Exception: elitism: could not parse \'%s\'" %inputStr
+            print "Accepted values are either 0 or 1"
+            print "Using the  default value for elitism: %d" %self.elitism
+            
+        
     def printaj(self):
         print "Using: "
         print "Input file1: " + self.input1 
