@@ -5,11 +5,11 @@ windows app za vizualizaciju DNA podataka
 
 ##### Što je bitno u repozitoriju?
 + appDNAdrivenIFS.bat
-+ Data
++ Data <sup>*ulaz</sup>
  + DNAsequence1.txt
  + DNAsequence2.txt	
  + IFSsimilitude.txt
-+ pics
++ pics   <sup>*izlaz</sup>
  + singleDNA.tif
  + bothDNA.tif
 
