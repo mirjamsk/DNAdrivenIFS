@@ -34,4 +34,5 @@ vizualizacija DNA podataka IFS fraktalima
 --
 
 ###### ***//TO-DO//***
-bolja  fitness funkcija
++ bolja  fitness funkcija
++ best of
