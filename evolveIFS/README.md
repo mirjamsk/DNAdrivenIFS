@@ -52,7 +52,7 @@ Više o implemenaciji jedinke u slijedećem paragfau.
 ##### Implementacija jedinke
 Jedinka se sastoji od 2 strukture podataka:
 + lista transformacija
-+ lista duljine 64 koja preslikava kodon-> transformaciju.
++ lista duljine 64 koja preslikava `kodon-> transformacija`.
 Odnosno kada alg za crtanje IFS fraktala naiđe na određeni kodon, tada na trenutnu točku primjenjuje transformaciju pod pripadajućim rednim brojem. 
 
 Tablicno predstavljena jedinka:
