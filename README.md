@@ -26,5 +26,12 @@ vizualizacija DNA podataka IFS fraktalima
 
 --
 
+##### Neke od online baza podataka DNA sekvenci:
+
++ http://www.ebi.ac.uk/
++ http://www.ncbi.nlm.nih.gov/
+
+--
+
 ###### ***//TO-DO//***
 bolja  fitness funkcija
