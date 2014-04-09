@@ -1,16 +1,18 @@
 genetic alg for evolving IFS 
 ==
 
-Implementacija genetskog algoritma za "evoluciju" tablica transformacija IFS fraktala. 
-
 <br>
 
-##### Pokretanje:
+Implementacija genetskog algoritma za "evoluciju" tablica transformacija IFS fraktala.
+**Pokretanje** je jednostavno:
+
+
+
 ```bash
 python run.py
 ```
 
-#### Konfiguracija:
+##### Konfiguracija:
 Za konfiguriranje pokretanja, dovoljno je promijeniti parametre u datoteci ***args.xml***
 ```xml
 <args>
@@ -33,11 +35,17 @@ Za konfiguriranje pokretanja, dovoljno je promijeniti parametre u datoteci ***ar
 
 <br>
 
+
+##### Imam izlaz, što s njim?
+U datoteku definiranu unutar čvora `<OutputFile>` bit će ispisana najbolja [jedinka](https://github.com/mirjamsk/DNAdrivenIFS/tree/master/evolveIFS#implementacija-jedinke). Taj ***izlaz*** je ujedno i ***ulaz*** [u program koji crta fraktale](https://github.com/mirjamsk/DNAdrivenIFS/blob/master/appDNAdrivenIFS)
+Više o implemenaciji jedinke u slijedećem paragfau.
+
+<br>
+
 ##### Par kratkih informacija:
 + Svaki se lanac DNA sastoji od građevnih jedinica zvanih nukleotidi kojih ima 4 vrste: adenin (A), citozin (C), gvanin (G) i timin (T). Ako lanac podijelimo u trojke (kodone), postoji 4^3=***64 mogućih kodona***. 
 
-+ IFS fraktal nastaje kao rezultat iterativne primjene deﬁniranih ***transformacĳa*** na neku početnu toč-
-ku.
++ IFS fraktal nastaje kao rezultat iterativne primjene deﬁniranih ***transformacĳa*** na neku početnu točku
 
 <br>
 
