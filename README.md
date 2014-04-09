@@ -4,7 +4,7 @@ vizualizacija DNA podataka IFS fraktalima
 
 ##### Što je u repozitoriju?
  + evolveIFS: *implementacija genetskog algoritma za evoluciju IFS fraktala*
- + hepers:  *sripte*
+ + helpers:  *sripte*
   + 	za ciscenje datoteke od svega što nije DNA podatak
   + 	za generiranje Markovog modela DNA podataka
   + 	za generiranje random DNA niza
