@@ -37,7 +37,7 @@ class Selection():
         for i in range (0, count):
             index = int(random.uniform(0, len(population.individuals)))
             individual = population.getIndividual(index)
-            probability = (bestFitness - individual.getFitness() ) / (bestFitness- worstFitness)
+            probability = (bestFitness - individual.getFitness() +0.1) / (bestFitness- worstFitness+ 0.1)
             if random.uniform(0,1)  < probability:
                 population.randomizeIndividual(index)
         

@@ -1,6 +1,6 @@
 from Population import Population
 import random
-from Fitness import Fitness
+from Fitness import Fitness, ManhattanDistFit, EuclideanDistFit
 from Crossover import Crossover
 from Selection import Selection
 from Mutation import Mutation
@@ -59,11 +59,11 @@ def writeOut(output, p):
 def main():
     args = argsParser()
     args.parse('args.xml')
-    if   args.fitnessFunction == "euclidean" : fitOp = Fitness.euclideanDistance
-    elif args.fitnessFunction == "manhattan" : fitOp = Fitness.manhattanDistance
-    elif args.fitnessFunction == "minkowski" : fitOp = Fitness.minkowskiDistance
+    if   args.fitnessFunction == "euclidean" : fitOp = EuclideanDistFit(args.input1, args.input2)
+    elif args.fitnessFunction == "manhattan" : fitOp = ManhattanDistFit(args.input1, args.input2)
+#     elif args.fitnessFunction == "minkowski" : fitOp = Fitness.minkowskiDistance
     else : raise "Something went wrong while assigning the fitness function"
-    
+#     
     if   args.selection       == "tournament" : selOp = Selection.tournament
     elif args.selection       == "elimination": selOp = Selection.elimination
     else : raise "Something went wrong while assigning the selection operator"
@@ -73,9 +73,10 @@ def main():
     elif args.elitism == 1: Selection.setElitism(1)
     else : raise "Something went wrong while assigning elitism"
     
+
     crossOp = Crossover.crossover
     mutationOp = Mutation.mutation
-    p = Population(args.populationSize, fitOp, selOp, crossOp, mutationOp,  args.input1, args.input2)
+    p = Population(args.populationSize, fitOp, selOp, crossOp, mutationOp)
     # set fitness function
     #Fitness.setDistanceFunction(args.fitnessFunction)
     # set selectionOperator

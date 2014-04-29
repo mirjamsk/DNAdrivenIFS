@@ -20,6 +20,7 @@ class Individual:
         self.similitudes = []
         self.indexes = []
         self.fitness = 0.0
+        
         for i in range(8):
             self.similitudes.append([random.uniform(0,2*math.pi),
                                 random.uniform(-1.0, 1.0),
@@ -28,10 +29,12 @@ class Individual:
         for i in range(64):
             self.indexes.append(random.randrange(0,8))
         
+    
+    def setFitness(self, fitness):
+        self.fitness = fitness
         
-        ## dictionary mapping all codons to it's index {"CCC": 0, "CCG": 1, ..., "TTT"= 64}
-        codon = list(itertools.product('CGAT', repeat= 3))
-        self.codonDict = dict(zip([codon[i][0]+codon[i][1]+codon[i][2] for i in range(0, len(codon))], [i for i in range(0, 64)]))
+    def getFitness(self):
+        return self.fitness
     
     def getSingleSimilitude(self, index):
         return self.similitudes[index]
@@ -77,72 +80,3 @@ class Individual:
     def getIndexes(self):
         return self.indexes
 
-    def setFitness(self, fitness):
-        self.fitness = fitness
-        
-    def getFitness(self):
-        return self.fitness
-    
-    def evaluateSelf(self, fitOp, codons1, codons2):
-        #---------------------------------- median1 = self.calcMedian( codons1 )
-        #---------------------------------- median2 = self.calcMedian( codons2 )
-        # farthestPoint1 = self.calcFarthestDistanceFromMedian(codons1, median1)
-        # farthestPoint2 = self.calcFarthestDistanceFromMedian(codons2, median2)
-        # self.setFitness( Fitness.minMax(m1 = median1, m2 = median2, fp1 = farthestPoint1,  fp2 = farthestPoint2 ))
-        median1 = self.calcMedian( codons1 )
-        median2 = self.calcMedian ( codons2 )
-        #print "*median1 (%f, %f) " %median1
-        #print "*median2  (%f, %f)" %median2
-        self.setFitness( fitOp(median1, median2) )
-        #print "*fitness: %f" %self.getFitness()
-      #try minmax
-
-       
-
-    def calcMedian(self, codons):
-        print "*****"
-        px = 0
-        py = 0
-        xMedian = 0.0
-        yMedian = 0.0
-        for codon in codons:
-            if codon not in self.codonDict.keys():
-                continue
-            similitude = self.getSingleSimilitude(self.getIndexElement(self.codonDict[codon]))
-            rad = similitude[0]
-            translateX = similitude[1]
-            translateY = similitude[2]
-            scale = similitude[3]
-            x = px;
-            y = py;
-            px = scale *(x*math.cos(rad)- y*math.sin(rad) + translateX)
-            py = scale *(x*math.sin(rad)+ y*math.cos(rad) + translateY)
-            xMedian += px;
-            yMedian += py;
-            print "px, py: %f, %f" %(px, py)
-        xMedian = xMedian /float(len(codons))
-        yMedian = yMedian /float(len(codons))
-        return xMedian, yMedian
-    
-    def calcFarthestDistanceFromMedian(self, codons, median):
-        px = 0
-        py = 0
-        farthestPoint = [median[0], median[1]]
-        
-        for codon in codons:
-            if codon not in self.codonDict.keys():
-                continue
-            similitude = self.getSingleSimilitude(self.getIndexElement(self.codonDict[codon]))
-            rad = similitude[0]
-            translateX = similitude[1]
-            translateY = similitude[2]
-            scale = similitude[3]
-            x = px;
-            y = py;
-            px = scale *(x*math.cos(rad)- y*math.sin(rad) + translateX)
-            py = scale *(x*math.sin(rad)+ y*math.cos(rad) + translateY)
-            
-            if Fitness.euclideanDistance(median, (px,py)) > Fitness.euclideanDistance(median, farthestPoint):
-                farthestPoint = [px, py]
-        
-        return farthestPoint
