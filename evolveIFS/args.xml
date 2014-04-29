@@ -6,12 +6,12 @@
 
 	<OutputFile>output/debugging.txt </OutputFile>
 
-	<GenerationNumber> 100</GenerationNumber>
-	<PopulationSize> 10 </PopulationSize>
+	<GenerationNumber> 10</GenerationNumber>
+	<PopulationSize> 100 </PopulationSize>
 	<CrossoverFactor> 0.3 </CrossoverFactor>
-	<MutationFactor> 0.5 </MutationFactor>
-    <FitnessFunction>  euclidean </FitnessFunction> <!-- possible: manhattan, euclidean -->
-    <Selection>  elimination </Selection>           <!-- possible: elimination, tournament -->
+	<MutationFactor> 0.2 </MutationFactor>
+    <FitnessFunction>  mean </FitnessFunction> <!-- possible: manhattan, euclidean -->
+    <Selection>  tournament </Selection>           <!-- possible: elimination, tournament -->
     <Elitism> 1 </Elitism>                          <!-- possible: 0,1 -->	
 	<p>3</p>
 </args>

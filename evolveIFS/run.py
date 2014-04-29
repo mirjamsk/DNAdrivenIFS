@@ -1,6 +1,6 @@
 from Population import Population
 import random
-from Fitness import Fitness, ManhattanDistFit, EuclideanDistFit
+from Fitness import Fitness, ManhattanDistFit, EuclideanDistFit, MinkowskiDistFit, MeanFit
 from Crossover import Crossover
 from Selection import Selection
 from Mutation import Mutation
@@ -13,7 +13,6 @@ def printBest(p):
         print j , ". best, fitness: " , p.getIndividual(j).getFitness()
     
 
-#def run(numberOfGenerations, populationSize, crossoverFactor, mutationFactor, outputFile):
 def run ( p, args):
 
     for i in range(0, args.numberOfGenerations):
@@ -61,7 +60,8 @@ def main():
     args.parse('args.xml')
     if   args.fitnessFunction == "euclidean" : fitOp = EuclideanDistFit(args.input1, args.input2)
     elif args.fitnessFunction == "manhattan" : fitOp = ManhattanDistFit(args.input1, args.input2)
-#     elif args.fitnessFunction == "minkowski" : fitOp = Fitness.minkowskiDistance
+    elif args.fitnessFunction == "mean"      : fitOp = MeanFit(args.input1, args.input2)
+    elif args.fitnessFunction == "minkowski" : fitOp = MinkowskiDistFit(args.input1, args.input2, args.p)
     else : raise "Something went wrong while assigning the fitness function"
 #     
     if   args.selection       == "tournament" : selOp = Selection.tournament
@@ -77,14 +77,7 @@ def main():
     crossOp = Crossover.crossover
     mutationOp = Mutation.mutation
     p = Population(args.populationSize, fitOp, selOp, crossOp, mutationOp)
-    # set fitness function
-    #Fitness.setDistanceFunction(args.fitnessFunction)
-    # set selectionOperator
-    #Selection.setSelectionOperator(args.selection)
-    # set if elitist
-    #Selection.setElitism(args.elitism)
-    
-    #p = Population(args.populationSize, args.input1, args.input2)
+   
     p.evaluateAll()
     run (p, args)
     writeOut(args.outputFile, p)

@@ -1,5 +1,5 @@
 import math
-
+import sys
 import itertools
 
 class Fitness(object):
@@ -83,29 +83,49 @@ class EuclideanDistFit (Fitness):
     def euclideanDistance(self,  point1, point2):
         return  (point1[0]-point2[0])**2 + (point1[1]-point2[1])**2 
     
-    #p = 3
-class MinkMinMax():
-    def __init__(self, file1, file2):
-        super(MinkMinMax, self).__init__( file1, file2)  
-    
-    def minkowskiDistance(self,  point1, point2, p = 3):
-        return  (point1[0]-point2[0])**p + (point1[1]-point2[1])**p
-    
 
-    def minMax(self, m1, m2, fp1, fp2):
-        medianEuclidean = cls.euclideanDistance(m1, m2)
-        mFpEucl1 =cls.euclideanDistance(m1, fp1)
-        mFpEucl2 =cls.euclideanDistance(m2, fp2)
+class MinkowskiDistFit(Fitness):
+    def __init__(self, file1, file2, p=3):
+        super(MinkowskiDistFit, self).__init__( file1, file2)  
+        self.p = p;
         
-        return abs(medianEuclidean - (mFpEucl1+ mFpEucl2))
+    def evaluate(self, individual):
+        median1 = self.calcMedian( individual, self.codons1 )
+        median2 = self.calcMedian ( individual, self.codons2 )
+        individual.setFitness(self.minkowskiDistance(median1, median2))      
     
-
     
-    def calcFarthestDistanceFromMedian(self, individual, median, codons):
+    def minkowskiDistance(self,  point1, point2):
+        return  (point1[0]-point2[0])**self.p + (point1[1]-point2[1])**self.p
+   
+    
+class MeanFit(EuclideanDistFit):
+    def __init__(self, file1, file2):
+        super(MeanFit, self).__init__( file1, file2)  
+        
+    def evaluate(self, individual):
+        
+        median1 = self.calcMedian( individual, self.codons1 )
+        median2 = self.calcMedian ( individual, self.codons2 )
+        print "median1: ", median1, "median2:", median2
+        scale = self.checkClustering(individual, median1, median2)
+        individual.setFitness(self.euclideanDistance(median1, median2) * scale *0.5)     
+    
+            
+    def checkClustering(self, individual, median1, median2):
+       
+        scale1 = self.getScale(individual, median1, median2, self.codons1)
+        scale2 = self.getScale(individual, median2, median1, self.codons2)
+        
+        return scale1 if scale1<scale2 else scale2;
+        
+    def getScale(self, individual, medianSelf, medianOther ,codons):
         px = 0
         py = 0
-        farthestPoint = [median[0], median[1]]
-        
+        diffSelf = 0
+        diffOther = 0
+        diffCurr = sys.maxint;
+        scale = 1;
         for codon in codons:
             if codon not in self.codonDict.keys():
                 continue
@@ -118,11 +138,58 @@ class MinkMinMax():
             y = py;
             px = scale *(x*math.cos(rad)- y*math.sin(rad) + translateX)
             py = scale *(x*math.sin(rad)+ y*math.cos(rad) + translateY)
+            diffSelf = self.euclideanDistance((px,py),medianSelf)
+            diffOther = self.euclideanDistance((px,py),medianOther)
+            if ( diffOther <= diffSelf and  diffOther < diffCurr ):
+                diffCurr = diffOther;
+                scale = diffOther/diffSelf;
+                print "diff other: ",  diffOther,  "DiffSelf: ",  diffSelf ,  "scale ", scale;
             
-            if Fitness.euclideanDistance(median, (px,py)) > Fitness.euclideanDistance(median, farthestPoint):
-                farthestPoint = [px, py]
-        
-        return farthestPoint
+            return scale;
+                             
+    
+
+# class MinMaxDistFit(Fitness):
+#     def __init__(self, file1, file2):
+#         super(MinMaxDistFit, self).__init__( file1, file2)  
+#     
+#         
+#     def evaluate(self, individual):
+#         median1 = self.calcMedian( individual, self.codons1 )
+#         median2 = self.calcMedian ( individual, self.codons2 )
+#         individual.setFitness(self.minkowskiDistance(median1, median2))    
+#           
+#     def minMax(self, m1, m2, fp1, fp2):
+#         medianEuclidean = self.euclideanDistance(m1, m2)
+#         mFpEucl1 =cls.euclideanDistance(m1, fp1)
+#         mFpEucl2 =cls.euclideanDistance(m2, fp2)
+#         
+#         return abs(medianEuclidean - (mFpEucl1+ mFpEucl2))
+#     
+# 
+#     
+#     def calcFarthestDistanceFromMedian(self, individual, median, codons):
+#         px = 0
+#         py = 0
+#         farthestPoint = [median[0], median[1]]
+#         
+#         for codon in codons:
+#             if codon not in self.codonDict.keys():
+#                 continue
+#             similitude = individual.getSingleSimilitude(individual.getIndexElement(self.codonDict[codon]))
+#             rad = similitude[0]
+#             translateX = similitude[1]
+#             translateY = similitude[2]
+#             scale = similitude[3]
+#             x = px;
+#             y = py;
+#             px = scale *(x*math.cos(rad)- y*math.sin(rad) + translateX)
+#             py = scale *(x*math.sin(rad)+ y*math.cos(rad) + translateY)
+#             
+#             if Fitness.euclideanDistance(median, (px,py)) > Fitness.euclideanDistance(median, farthestPoint):
+#                 farthestPoint = [px, py]
+#         
+#         return farthestPoint
            
    #def evaluateSelf(self, fitOp):
        # self.setFitness( fitOp.evaluate(self))
