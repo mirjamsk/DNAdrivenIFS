@@ -68,7 +68,7 @@ class IFSfractal {
     int index;
 
 
-    for (int i = 2; i < sequence.length(); i++) {
+    for (int i = 2; i < sequence.length(); i+=3) {
 
       slidingWindow = ""+sequence.charAt(i-2)+sequence.charAt(i-1)+sequence.charAt(i);
       index = codonMap.get(slidingWindow);
@@ -115,7 +115,7 @@ class IFSfractal {
     int mapY;
     int index;
 
-    for (int i = 2; i < sequence.length(); i++) {
+    for (int i = 2; i < sequence.length(); i+=3) {
 
       slidingWindow = ""+sequence.charAt(i-2)+sequence.charAt(i-1)+sequence.charAt(i);
       index = codonMap.get(slidingWindow);

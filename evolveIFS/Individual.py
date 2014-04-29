@@ -91,17 +91,20 @@ class Individual:
         # self.setFitness( Fitness.minMax(m1 = median1, m2 = median2, fp1 = farthestPoint1,  fp2 = farthestPoint2 ))
         median1 = self.calcMedian( codons1 )
         median2 = self.calcMedian ( codons2 )
+        #print "*median1 (%f, %f) " %median1
+        #print "*median2  (%f, %f)" %median2
         self.setFitness( fitOp(median1, median2) )
-      
+        #print "*fitness: %f" %self.getFitness()
       #try minmax
 
        
 
     def calcMedian(self, codons):
+        print "*****"
         px = 0
         py = 0
-        xMedian = 0.0;
-        yMedian = 0.0;
+        xMedian = 0.0
+        yMedian = 0.0
         for codon in codons:
             if codon not in self.codonDict.keys():
                 continue
@@ -116,7 +119,7 @@ class Individual:
             py = scale *(x*math.sin(rad)+ y*math.cos(rad) + translateY)
             xMedian += px;
             yMedian += py;
-
+            print "px, py: %f, %f" %(px, py)
         xMedian = xMedian /float(len(codons))
         yMedian = yMedian /float(len(codons))
         return xMedian, yMedian
