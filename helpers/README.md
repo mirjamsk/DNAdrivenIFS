@@ -1,4 +1,4 @@
-Pomocne python skripte
+Pomoćne python skripte
 ---
 
 
@@ -17,8 +17,8 @@ Pomocne python skripte
 
 ######cleanDNAseq.py
 
-Skinuta/sačuvana datoteka s DNA podacima može sadržavati neželjene znakove ( npr. novi red, bjeline). Kako bi uklonili sve neželjene znakove osim nukleotida [A C G T] koristi se *cleanDNAseq.py* 
-primjer korištenja ako želimo počistiti HIVgenome.txt:
+Skinuta/sačuvana datoteka s DNA podacima može sadržavati neželjene znakove ( npr. novi red, bjeline). Kako bi uklonili sve znakove osim nukleotida [A C G T] koristi se *cleanDNAseq.py*. 
+Primjer korištenja ako želimo počistiti *HIVgenome.txt*:
 ```bash
 python cleanDNAseq.py -i sampleData/HIVgenome.txt          #assumes default output: ./cleanDNA.txt
 python cleanDNAseq.py -i sampleData/HIVgenome.txt -o [file]
@@ -27,8 +27,8 @@ python cleanDNAseq.py -i sampleData/HIVgenome.txt -o [file]
 
 ######generateMarkovOutput.py
 
-Za generiranje Markovljevog modela DNA niza koristi se  *generateMarkovOutput.py*
-primjer korištenja ako želimo generirati Markovljem model HIVgenome.txt:
+Za generiranje Markovljevog modela DNA niza koristi se  *generateMarkovOutput.py*. <br>
+Primjer korištenja ako želimo generirati Markovljev model iz *HIVgenome.txt*:
 ```bash
 python generateMarkovOutput.py -i sampleData/HIVgenome.txt -w 3  
 #assumes defaults output: ./output.txt, generated sequence lenght: 2000
@@ -53,8 +53,8 @@ arguments:
 
 ######generateRandomDNA.py
 
-Za nasumično generiranu DNA sekvencu koristiti *generateRandomDNA.py*
-primjer korištenja:
+Za nasumično generiranu DNA sekvencu koristiti *generateRandomDNA.py*.
+Primjer korištenja:
 ```bash
 python generateRandomDNA.py                  #assumes default output: ./randomSequence.txt, sequence length: 2000
 python generateRandomDNA.py  -o [file] -l n  #where n is an int
