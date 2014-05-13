@@ -22,6 +22,7 @@ vizualizacija DNA podataka IFS fraktalima
 + http://www.ncbi.nlm.nih.gov/pmc/articles/PMC330698/pdf/nar00192-0217.pdf
 + http://content.lib.utah.edu/utils/getfile/collection/etd1/id/1164/filename/1252.pdf
 + https://orion.math.iastate.edu/danwell/CG/CG.html
++ http://www.fer.unizg.hr/_download/repository/bioinformatika_skripta.pdf
 
 
 --
