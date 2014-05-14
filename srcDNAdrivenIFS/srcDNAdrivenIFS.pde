@@ -1,15 +1,15 @@
 
 
 void setup() {
-  size(1500, 1500);
+  size(700, 700);
   background(0);
   smooth();
   strokeWeight(2);
 //  Parser p = new Parser("outputSimil2.txt"); 
-  Parser p = new Parser("Nonoverlaping.txt");
+  Parser p = new Parser("similitude23.txt");
   p.parse();
-  IFSfractal ifs = new IFSfractal(p.getSimilitudes(), p.getIndexes(), "DNAsequence1.txt", color(0,255,0));
-   IFSfractal ifs1 = new IFSfractal(p.getSimilitudes(), p.getIndexes(), "DNAsequence2.txt", color(255, 0, 255));
+  IFSfractal ifs = new IFSfractal(p.getSimilitudes(), p.getIndexes(), "HIVmarkov.txt", color(0,255,0));
+   IFSfractal ifs1 = new IFSfractal(p.getSimilitudes(), p.getIndexes(), "MethanocalMarkov.txt", color(255, 0, 255));
 
   print(ifs.bounds[0], " ", ifs.bounds[1], "\n" );
    print(ifs1.bounds[0], " ", ifs1.bounds[1], "\n" );
@@ -22,9 +22,9 @@ void setup() {
    print(ifs1.bounds[0], " ", ifs1.bounds[1], "\n" );
   
   ifs.drawFractal();
-  save("pics/overlap1"); 
+  save("pics/simili23single"); 
   ifs1.drawFractal();
-  save("pics/overlap2"); 
+  save("pics/simili23both"); 
   
 }
 

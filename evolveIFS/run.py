@@ -1,6 +1,6 @@
 from Population import Population
 import random
-from Fitness import Fitness, ManhattanDistFit, EuclideanDistFit, MinkowskiDistFit, MeanFit
+from Fitness import Fitness, ManhattanDistFit, EuclideanDistFit, MinkowskiDistFit, MeanFit, LinearInterpolation
 from Crossover import Crossover
 from Selection import Selection
 from Mutation import Mutation
@@ -51,6 +51,31 @@ def writeOut(output, p):
     
     f.write(data);
     f.close();
+    
+def writeOutBatch(i, p):
+    #write out the best Similitude/Index pair to the output
+    f = open("output/similitude" + str(i) + ".txt", "w");
+    data = ""
+    
+    for similitude in p.getIndividual(0).getAllSimilitudesCopy():
+        for s in similitude:
+            data += str(s) + " "
+        data+="\n"
+        
+    data +="#\n"
+    
+    for index in p.getIndividual(0).getIndexesCopy():
+            data += str(index) + " "
+    
+    f.write(data);
+    f.close();
+
+    logStr = "Batch %3d,\t best fitness: %f \n" %(i, p.getIndividual(0).getFitness())
+    if i == 1: logFile = open("output/log.txt", "w");
+    else:      logFile = open("output/log.txt", "a+");
+    logFile.write(logStr)
+
+
 
 
 
@@ -62,6 +87,7 @@ def main():
     elif args.fitnessFunction == "manhattan" : fitOp = ManhattanDistFit(args.input1, args.input2)
     elif args.fitnessFunction == "mean"      : fitOp = MeanFit(args.input1, args.input2)
     elif args.fitnessFunction == "minkowski" : fitOp = MinkowskiDistFit(args.input1, args.input2, args.p)
+    elif args.fitnessFunction == "linear"    : fitOp = LinearInterpolation(args.input1, args.input2, args.euclF, args.manhF)
     else : raise "Something went wrong while assigning the fitness function"
 #     
     if   args.selection       == "tournament" : selOp = Selection.tournament
@@ -76,11 +102,19 @@ def main():
 
     crossOp = Crossover.crossover
     mutationOp = Mutation.mutation
-    p = Population(args.populationSize, fitOp, selOp, crossOp, mutationOp)
-   
-    p.evaluateAll()
-    run (p, args)
-    writeOut(args.outputFile, p)
+    
+    if args.batch == 1:
+        p = Population(args.populationSize, fitOp, selOp, crossOp, mutationOp)
+        p.evaluateAll() 
+        run (p, args)
+        writeOut(args.outputFile, p)
+    else:
+        for i in range(0, args.batch):
+            print "\nBatch: %d/%d" %(i+1, args.batch)
+            p = Population(args.populationSize, fitOp, selOp, crossOp, mutationOp)
+            p.evaluateAll() 
+            run (p, args)
+            writeOutBatch(i+1, p)
     
 if __name__ == '__main__':
     main()
