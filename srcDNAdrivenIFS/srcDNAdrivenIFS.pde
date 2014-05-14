@@ -22,9 +22,10 @@ void setup() {
    print(ifs1.bounds[0], " ", ifs1.bounds[1], "\n" );
   
   ifs.drawFractal();
-  save("pics/simili23single"); 
+  ifs.drawFractal();
+  save("pics/simili231single"); 
   ifs1.drawFractal();
-  save("pics/simili23both"); 
+  save("pics/simili231both"); 
   
 }
 
