@@ -12,6 +12,8 @@ class argsParser(object):
         self.mutationFactor = 0.2
         self.fitnessFunction = "euclidean"
         self.p = 3
+        self.euclF = 0.5
+        self.manhF = 0.5
         self.selection = "tournament"
         self.elitism = 0
     
@@ -30,6 +32,8 @@ class argsParser(object):
             if root.find('Selection') is not None: self.assignSelectionOperator(root.find('Selection').text.strip())
             if root.find('Elitism') is not None: self.elitism = int(root.find('Elitism').text.strip())
             if root.find('p') is not None: self.p = int(root.find('p').text.strip())
+            if root.find('euclFactor') is not None: self.euclF = float(root.find('euclFactor').text.strip())
+            if root.find('manhFactor') is not None: self.manhF = float(root.find('manhFactor').text.strip())
             
             self.printaj()
 
@@ -73,7 +77,7 @@ class argsParser(object):
     
     
     def assignFitnessFunction(self, inputStr):
-        if inputStr == "euclidean" or inputStr == "manhattan" or inputStr == "minkowski" or inputStr == "mean" :
+        if inputStr == "euclidean" or inputStr == "manhattan" or inputStr == "minkowski" or inputStr == "mean"  or inputStr == "linear":
             self.fitnessFunction = inputStr
         else :
             self.fitnessFunction = "euclidean"
@@ -102,13 +106,19 @@ class argsParser(object):
         
     def printaj(self):
         print "Using: "
-        print "Input file1: " + self.input1 
-        print "Input file2: " + self.input2
-        print "Output file: " +self.outputFile 
-        print "Number of Generations: %d " %self.numberOfGenerations 
-        print "Population size: %d " %self.populationSize
-        print "Crossover factor: %f " %self.crossoverFactor 
-        print "Mutation factor: %f " %self.mutationFactor
-        print "Fitness function: " + self.fitnessFunction
-        print "Selection operator: " + self.selection
-        print "Elitism: %d " %self.elitism
+        print "Input file1: " +             self.input1 
+        print "Input file2: " +             self.input2
+        print "Output file: " +             self.outputFile 
+        print "Number of Generations: %d "  %self.numberOfGenerations 
+        print "Population size: %d "        %self.populationSize
+        print "Crossover factor: %.3f "     %self.crossoverFactor 
+        print "Mutation factor: %.3f "      %self.mutationFactor
+        print "Selection operator: " +      self.selection
+        print "Elitism: %d "                %self.elitism
+        print "Fitness function: " +        self.fitnessFunction
+        if self.fitnessFunction == "linear":
+            print "Eucld dist factor: %.3f"   %self.euclF
+            print "Manh dist factor: %.3f"    %self.manhF
+        elif self.fitnessFunction == "minkowski":
+             print "p: %.3f"                  %self.p
+       

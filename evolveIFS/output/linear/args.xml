@@ -4,8 +4,9 @@
         <item>input/MethanocalMarkov.txt</item>
     </InputFiles>
 
-	<OutputFile>output/linear/1.txt </OutputFile>
-	<GenerationNumber> 1</GenerationNumber>
+	<OutputFile>output/debugging.txt </OutputFile>
+
+	<GenerationNumber> 100</GenerationNumber>
 	<PopulationSize> 100 </PopulationSize>
 	<CrossoverFactor> 0.3 </CrossoverFactor>
 	<MutationFactor> 0.2 </MutationFactor>
