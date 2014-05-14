@@ -16,6 +16,7 @@ class argsParser(object):
         self.manhF = 0.5
         self.selection = "tournament"
         self.elitism = 0
+        self.batch = 1
     
     def parse(self, f):
         try:
@@ -34,6 +35,7 @@ class argsParser(object):
             if root.find('p') is not None: self.p = int(root.find('p').text.strip())
             if root.find('euclFactor') is not None: self.euclF = float(root.find('euclFactor').text.strip())
             if root.find('manhFactor') is not None: self.manhF = float(root.find('manhFactor').text.strip())
+            if root.find('Batch') is not None: self.batch = int(root.find('Batch').text.strip())
             
             self.printaj()
 
@@ -106,9 +108,14 @@ class argsParser(object):
         
     def printaj(self):
         print "Using: "
+        print "Batch: %d"                   %self.batch
         print "Input file1: " +             self.input1 
         print "Input file2: " +             self.input2
-        print "Output file: " +             self.outputFile 
+        if self.batch == 1:
+            print "Output file: " +             self.outputFile 
+        else: 
+             print "Output file: output/similitude_n.txt" 
+             print "Log file: output/log.txt"
         print "Number of Generations: %d "  %self.numberOfGenerations 
         print "Population size: %d "        %self.populationSize
         print "Crossover factor: %.3f "     %self.crossoverFactor 

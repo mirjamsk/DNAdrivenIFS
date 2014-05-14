@@ -5,7 +5,7 @@
     </InputFiles>
 
 	<OutputFile>output/linear/1.txt </OutputFile>
-	<GenerationNumber> 1</GenerationNumber>
+	<GenerationNumber> 100</GenerationNumber>
 	<PopulationSize> 100 </PopulationSize>
 	<CrossoverFactor> 0.3 </CrossoverFactor>
 	<MutationFactor> 0.2 </MutationFactor>
@@ -15,5 +15,6 @@
     <Selection>  tournament </Selection>           <!-- possible: elimination, tournament -->
     <Elitism> 1 </Elitism>                          <!-- possible: 0,1 -->	
 	<p>3</p>
+	<Batch>30</Batch>
 </args>
 
