@@ -19,3 +19,12 @@ Batch  18,	 best fitness: 91.877574
 Batch  19,	 best fitness: 311.722890 
 Batch  20,	 best fitness: 23.766043 
 Batch  21,	 best fitness: 31.435422 
+Batch  22,	 best fitness: 8.356441 
+Batch  23,	 best fitness: 14.650503 
+Batch  24,	 best fitness: 53.456726 
+Batch  25,	 best fitness: 6.513501 
+Batch  26,	 best fitness: 250.647792 
+Batch  27,	 best fitness: 9.641225 
+Batch  28,	 best fitness: 78.937675 
+Batch  29,	 best fitness: 12.724414 
+Batch  30,	 best fitness: 42.698045 
