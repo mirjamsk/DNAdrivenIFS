@@ -24,8 +24,8 @@ vizualizacija DNA podataka IFS fraktalima
 + https://orion.math.iastate.edu/danwell/CG/CG.html
 + http://www.fer.unizg.hr/_download/repository/bioinformatika_skripta.pdf
 +http://www.zemris.fer.hr/predmeti/irg/irg-knjiga.pdf
-
-
++http://www.whitman.edu/mathematics/SeniorProjectArchive/2013/Batterson.pdf
++http://web.math.pmf.unizg.hr/~vondra/ml-p1.pdf
 --
 
 ##### Neke od online baza podataka DNA sekvenci:
