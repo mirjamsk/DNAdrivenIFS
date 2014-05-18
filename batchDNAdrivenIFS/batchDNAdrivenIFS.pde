@@ -12,14 +12,14 @@ void setup() {
     Parser p = new Parser("randomSimili/similitude"+i+".txt");
     p.parse();
     
-    IFSfractal ifs = new IFSfractal(p.getSimilitudes(), p.getIndexes(), "HIVmarkov.txt");
+    IFSfractal ifs = new IFSfractal(p.getSimilitudes(), p.getIndexes(), "randomDNA.txt");
     ifs.drawFractal();
     
-    //filter(DILATE);
+    filter(DILATE);
     filter(BLUR,0.7);
  
-    //fill(0, 30);
-    //rect(0,0, width, height);
+    fill(0, 30);
+    rect(0,0, width, height);
     save("pics/RandomSimili/similitude"+i+".png"); 
   
   }
