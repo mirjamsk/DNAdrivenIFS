@@ -141,11 +141,10 @@ class IFSfractal {
       py = scale *(x*sin(rad)+ y*cos(rad) + translateY);
 
       //    println(px, " ", py);
-      mapX = int(map(px, xBounds[0], xBounds[1], 0, xBoundRatio*width ));
-      mapY = int(map(py, yBounds[0], yBounds[1], yBoundRatio*height, 0));
+      mapX = int(map(px, xBounds[0], xBounds[1], 5, xBoundRatio*(width-100)-50 ));
+      mapY = int(map(py, yBounds[0], yBounds[1], yBoundRatio*(height-100)-50, 50));
       
       if(c == color(0,0,0)){
-        //r BLEND, ADD, SUBTRACT, DARKEST, LIGHTEST, DIFFERENCE, EXCLUSION, MULTIPLY, SCREEN, OVERLAY, HARD_LIGHT, SOFT_LIGHT, DODGE, or BURN
          //stroke(blendColor(similitudes.get(index).colour, get(mapX, mapY),BURN), 127);
         stroke(blendColor(similitudes.get(index).colour, get(mapX, mapY), SCREEN), 127);
     }

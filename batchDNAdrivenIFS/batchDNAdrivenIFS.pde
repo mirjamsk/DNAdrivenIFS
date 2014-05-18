@@ -15,10 +15,11 @@ void setup() {
     IFSfractal ifs = new IFSfractal(p.getSimilitudes(), p.getIndexes(), "HIVmarkov.txt");
     ifs.drawFractal();
     
-   
+    //filter(DILATE);
     filter(BLUR,0.7);
-    
-    
+ 
+    //fill(0, 30);
+    //rect(0,0, width, height);
     save("pics/RandomSimili/similitude"+i+".png"); 
   
   }
