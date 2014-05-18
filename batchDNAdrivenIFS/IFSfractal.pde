@@ -3,7 +3,8 @@ class IFSfractal {
   ArrayList<Similitude> similitudes;
   HashMap<String, Integer> codonMap;
   int[] indexes;
-  float[] bounds;
+  float[] xBounds;
+  float[] yBounds;
   String sequence;
   color c;
 
@@ -12,7 +13,8 @@ class IFSfractal {
     this.indexes = indexes;
     this.similitudes = similitudes;
     this.sequence = loadStrings(sequenceFile)[0];
-    this.bounds = new float[2];
+    this.xBounds = new float[2];
+    this.yBounds = new float[2];
     this.codonMap = new HashMap<String, Integer>();
     this.initializeCodonMap();
     this.findBounds();
@@ -24,7 +26,8 @@ class IFSfractal {
     this.indexes = indexes;
     this.similitudes = similitudes;
     this.sequence = loadStrings(sequenceFile)[0];
-    this.bounds = new float[2];
+    this.xBounds = new float[2];
+    this.yBounds = new float[2];
     this.codonMap = new HashMap<String, Integer>();
     this.initializeCodonMap();
     this.findBounds();
@@ -82,20 +85,20 @@ class IFSfractal {
       px = scale *(x*cos(rad)- y*sin(rad) + translateX);  
       py = scale *(x*sin(rad)+ y*cos(rad) + translateY);
       //println(px, " ", py);
-      if (px < minBounds[0]) minBounds[0] = px;
-      if (px > maxBounds[0]) maxBounds[0] = px;
-      if (py < minBounds[1]) minBounds[1] = py;
-      if (py > maxBounds[1]) maxBounds[1] = py;
+      if (px < xBounds[0]) xBounds[0] = px;
+      if (px > xBounds[1]) xBounds[1] = px;
+      if (py < yBounds[0]) yBounds[0] = py;
+      if (py > yBounds[1]) yBounds[1] = py;
     }
 
-    if (maxBounds[0] - minBounds[0] > maxBounds[1] - minBounds[1]) {
-      this.bounds[0] = minBounds[0];
-      this.bounds[1] = maxBounds[0];
-    } 
-    else {
-      this.bounds[0] = minBounds[1];
-      this.bounds[1] = maxBounds[1];
-    }
+//    if (maxBounds[0] - minBounds[0] > maxBounds[1] - minBounds[1]) {
+//      this.bounds[0] = minBounds[0];
+//      this.bounds[1] = maxBounds[0];
+//    } 
+//    else {
+//      this.bounds[0] = minBounds[1];
+//      this.bounds[1] = maxBounds[1];
+//    }
     //println( this.bounds[0]);
     //println( this.bounds[1]);
   }
@@ -114,7 +117,16 @@ class IFSfractal {
     int mapX;
     int mapY;
     int index;
-
+    float xBoundRatio;
+    float yBoundRatio;
+    
+    if (xBounds[1] - xBounds[0] < yBounds[1] - yBounds[0]) {
+      xBoundRatio = (xBounds[1] - xBounds[0])/( yBounds[1] - yBounds[0]);
+      yBoundRatio = 1;
+    }else {
+      xBoundRatio = 1;
+      yBoundRatio = ( yBounds[1] - yBounds[0])/(xBounds[1] - xBounds[0]);
+  }
     for (int i = 2; i < sequence.length(); i+=3) {
 
       slidingWindow = ""+sequence.charAt(i-2)+sequence.charAt(i-1)+sequence.charAt(i);
@@ -129,10 +141,14 @@ class IFSfractal {
       py = scale *(x*sin(rad)+ y*cos(rad) + translateY);
 
       //    println(px, " ", py);
-      mapX = int(map(px, bounds[0], bounds[1], 10, width-10));
-      mapY = int(map(py, bounds[0], bounds[1], height-150, 10));
+      mapX = int(map(px, xBounds[0], xBounds[1], 0, xBoundRatio*width ));
+      mapY = int(map(py, yBounds[0], yBounds[1], yBoundRatio*height, 0));
       
-      if(c == color(0,0,0)) stroke(blendColor(similitudes.get(index).colour, get(mapX, mapY), SCREEN), 127);
+      if(c == color(0,0,0)){
+        //r BLEND, ADD, SUBTRACT, DARKEST, LIGHTEST, DIFFERENCE, EXCLUSION, MULTIPLY, SCREEN, OVERLAY, HARD_LIGHT, SOFT_LIGHT, DODGE, or BURN
+         //stroke(blendColor(similitudes.get(index).colour, get(mapX, mapY),BURN), 127);
+        stroke(blendColor(similitudes.get(index).colour, get(mapX, mapY), SCREEN), 127);
+    }
       else stroke(blendColor(c, get(mapX, mapY), SCREEN), 127);
       point(mapX, mapY);
     }
