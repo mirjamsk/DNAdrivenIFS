@@ -33,8 +33,12 @@ class argsParser(object):
             if root.find('Selection') is not None: self.assignSelectionOperator(root.find('Selection').text.strip())
             if root.find('Elitism') is not None: self.elitism = int(root.find('Elitism').text.strip())
             if root.find('p') is not None: self.p = int(root.find('p').text.strip())
-            if root.find('euclFactor') is not None: self.euclF = float(root.find('euclFactor').text.strip())
-            if root.find('manhFactor') is not None: self.manhF = float(root.find('manhFactor').text.strip())
+            if root.find('euclFactor') is not None: 
+                self.euclF = float(root.find('euclFactor').text.strip())
+                self.manhF = 1.0 - self.euclF
+            if root.find('manhFactor') is not None:
+                self.manhF = float(root.find('manhFactor').text.strip())
+                self.euclF = 1.0 - self.manhF
             if root.find('Batch') is not None: self.batch = int(root.find('Batch').text.strip())
             
             self.printaj()
