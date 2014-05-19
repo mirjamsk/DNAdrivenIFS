@@ -28,6 +28,8 @@ vizualizacija DNA podataka IFS fraktalima
 + http://web.math.pmf.unizg.hr/~vondra/ml-p1.pdf
 + http://www.zemris.fer.hr/~golub/ga/ga_skripta1.pdf
 + http://www.zemris.fer.hr/~golub/ga/ga_skripta2.pdf
+
+
 --
 
 ##### Neke od online baza podataka DNA sekvenci:
