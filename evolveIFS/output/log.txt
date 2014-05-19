@@ -11,3 +11,5 @@ Batch  10,	 best fitness: 16.081616
 Batch  11,	 best fitness: 11.008076 
 Batch  12,	 best fitness: 33.196908 
 Batch  13,	 best fitness: 8.813494 
+Batch  14,	 best fitness: 5.285845 
+Batch  15,	 best fitness: 27.968267 
