@@ -1,7 +1,7 @@
 <args>
     <InputFiles> 
         <item>input/HIVmarkov.txt</item>
-        <item>input/MethanocalMarkov.txt</item>
+        <item>input/MethanocaldococcusJannaschiiMarkov.txt</item>
     </InputFiles>
 
 	<OutputFile>output/linear/1.txt </OutputFile>

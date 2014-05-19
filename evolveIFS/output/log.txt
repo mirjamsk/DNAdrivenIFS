@@ -1,0 +1,13 @@
+Batch   1,	 best fitness: 327.980574 
+Batch   2,	 best fitness: 263.985805 
+Batch   3,	 best fitness: 33.750486 
+Batch   4,	 best fitness: 24.930557 
+Batch   5,	 best fitness: 32.276096 
+Batch   6,	 best fitness: 12.426024 
+Batch   7,	 best fitness: 6.101963 
+Batch   8,	 best fitness: 3.485231 
+Batch   9,	 best fitness: 20.508885 
+Batch  10,	 best fitness: 16.081616 
+Batch  11,	 best fitness: 11.008076 
+Batch  12,	 best fitness: 33.196908 
+Batch  13,	 best fitness: 8.813494 
