@@ -9,9 +9,9 @@
 	<PopulationSize> 100 </PopulationSize>
 	<CrossoverFactor> 0.3 </CrossoverFactor>
 	<MutationFactor> 0.2 </MutationFactor>
-    <FitnessFunction> manhattan </FitnessFunction> 		<!-- possible: manhattan, euclidean, minkowski, linear, mean -->
-    <euclFactor> 0.4 </euclFactor>
-    <manhFactor> 0.6 </manhFactor>
+    <FitnessFunction> linear </FitnessFunction> 		<!-- possible: manhattan, euclidean, minkowski, linear, mean -->
+    <euclFactor> 0.6 </euclFactor>
+    <manhFactor> 0.4 </manhFactor>
     <Selection>  tournament </Selection>           <!-- possible: elimination, tournament -->
     <Elitism> 1 </Elitism>                          <!-- possible: 0,1 -->	
 	<p>3</p>
