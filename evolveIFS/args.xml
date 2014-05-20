@@ -9,7 +9,7 @@
 	<PopulationSize> 100 </PopulationSize>
 	<CrossoverFactor> 0.3 </CrossoverFactor>
 	<MutationFactor> 0.2 </MutationFactor>
-    <FitnessFunction> euclidean </FitnessFunction> 		<!-- possible: manhattan, euclidean, minkowski, linear, mean -->
+    <FitnessFunction> manhattan </FitnessFunction> 		<!-- possible: manhattan, euclidean, minkowski, linear, mean -->
     <euclFactor> 0.4 </euclFactor>
     <manhFactor> 0.6 </manhFactor>
     <Selection>  tournament </Selection>           <!-- possible: elimination, tournament -->
