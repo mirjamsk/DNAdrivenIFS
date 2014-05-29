@@ -4,7 +4,7 @@ void setup() {
   size(700, 700);
   background(0);
   smooth(8);
-  strokeWeight(2);
+  strokeWeight(4);
   for (int i = 1; i <31; i++){
     print(i, "\n" );
     background(0);
