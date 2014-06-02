@@ -11,7 +11,8 @@ def printBest(p):
     p.individuals.sort(key=lambda x: x.getFitness(), reverse= True)
     for j in range(5):
         print j , ". best, fitness: " , p.getIndividual(j).getFitness()
-    
+        
+
 
 def run ( p, args):
 
@@ -30,7 +31,10 @@ def run ( p, args):
 
         ## sort and print best 5
         printBest(p)
-        print"**End of run ", i , "**"                
+        print"**End of run ", i+1 , "**"     
+        writeOutConvergence(i+1,p)
+
+               
     return
 
 
@@ -52,6 +56,29 @@ def writeOut(output, p):
     f.write(data);
     f.close();
     
+def writeOutConvergence(i,p): 
+    #write out the best Similitude/Index pair to the output
+    f = open("output/convergence/similitude" + str(i) + ".txt", "w");
+    data = ""
+    
+    for similitude in p.getIndividual(0).getAllSimilitudesCopy():
+        for s in similitude:
+            data += str(s) + " "
+        data+="\n"
+        
+    data +="#\n"
+    
+    for index in p.getIndividual(0).getIndexesCopy():
+            data += str(index) + " "
+    
+    f.write(data);
+    f.close();
+
+    logStr = "%d.  %f \n" %(i, p.getIndividual(0).getFitness())
+    if i == 1: logFile = open("output/convergence/log.txt", "w");
+    else:      logFile = open("output/convergence/log.txt", "a+");
+    logFile.write(logStr)
+        
 def writeOutBatch(i, p):
     #write out the best Similitude/Index pair to the output
     f = open("output/similitude" + str(i) + ".txt", "w");

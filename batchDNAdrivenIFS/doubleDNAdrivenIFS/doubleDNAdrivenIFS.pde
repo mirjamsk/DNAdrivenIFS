@@ -5,15 +5,15 @@ void setup() {
   background(0);
   smooth(8);
   strokeWeight(4);
-  for (int i = 1; i <31; i++){
+  for (int i = 1; i <101; i++){
     print(i, "\n" );
     background(0);
     
-    Parser p = new Parser("HPV-Helico-euclideanSimili/similitude"+i+".txt");
+    Parser p = new Parser("convergence/fit900/similitude"+i+".txt");
     p.parse();
     
-    IFSfractal ifs = new IFSfractal(p.getSimilitudes(), p.getIndexes(), "HumanPapillomavirusType41-markov.txt",color(10,200,255));
-    IFSfractal ifs1 = new IFSfractal(p.getSimilitudes(), p.getIndexes(), "HelicobacterPylori2017-markov.txt", color( 255, 120, 10));
+    IFSfractal ifs = new IFSfractal(p.getSimilitudes(), p.getIndexes(), "HIVmarkov.txt",color(10,200,255));
+    IFSfractal ifs1 = new IFSfractal(p.getSimilitudes(), p.getIndexes(), "MethanocaldococcusJannaschiiMarkov.txt", color( 255, 120, 10));
     
     
     //boundscheck
@@ -22,7 +22,7 @@ void setup() {
     
     ifs.drawFractal();
    
-    save("pics/HPV-Helico-euclidean/similitude"+i+"_1.png"); 
+    //save("pics/convergence/fit900/similitude"+i+"_1.png"); 
     ifs1.drawFractal();
     
     filter(DILATE);
@@ -30,7 +30,7 @@ void setup() {
  
 //    fill(0, 30);
 //    rect(0,0, width, height);
-    save("pics/HPV-Helico-euclidean/similitude"+i+"_2.png"); 
+    save("pics/convergence/fit900/similitude"+i+"_2.png"); 
   
   }
 }

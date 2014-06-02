@@ -1,10 +1,10 @@
 <args>
     <InputFiles> 
-        <item>input/HelicobacterPylori2017-markov.txt</item>
-        <item>input/HumanPapillomavirusType41-markov.txt</item>
+          <item>input/HIVmarkov.txt</item>
+		  <item>input/MethanocaldococcusJannaschiiMarkov.txt</item>
     </InputFiles>
 
-	<OutputFile>output/linear/1.txt </OutputFile>
+	<OutputFile>output/convergence/linearTourn.txt </OutputFile>
 	<GenerationNumber> 100</GenerationNumber>
 	<PopulationSize> 100 </PopulationSize>
 	<CrossoverFactor> 0.3 </CrossoverFactor>
@@ -15,6 +15,6 @@
     <Selection>  tournament </Selection>           <!-- possible: elimination, tournament -->
     <Elitism> 1 </Elitism>                          <!-- possible: 0,1 -->	
 	<p>3</p>
-	<Batch>30</Batch>
+	<Batch>1</Batch>
 </args>
 
