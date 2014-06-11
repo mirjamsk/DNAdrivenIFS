@@ -1,0 +1,9 @@
+MODULES_MANAGER_V2
+Crossover|C:\Users\Monsieur\Documents\workspaceEclipse\evolvableIFS\CD_bundle\src\evolveIFS\Crossover.py
+Fitness|C:\Users\Monsieur\Documents\workspaceEclipse\evolvableIFS\CD_bundle\src\evolveIFS\Fitness.py
+Individual|C:\Users\Monsieur\Documents\workspaceEclipse\evolvableIFS\CD_bundle\src\evolveIFS\Individual.py
+Mutation|C:\Users\Monsieur\Documents\workspaceEclipse\evolvableIFS\CD_bundle\src\evolveIFS\Mutation.py
+Population|C:\Users\Monsieur\Documents\workspaceEclipse\evolvableIFS\CD_bundle\src\evolveIFS\Population.py
+Selection|C:\Users\Monsieur\Documents\workspaceEclipse\evolvableIFS\CD_bundle\src\evolveIFS\Selection.py
+argsParser|C:\Users\Monsieur\Documents\workspaceEclipse\evolvableIFS\CD_bundle\src\evolveIFS\argsParser.py
+run|C:\Users\Monsieur\Documents\workspaceEclipse\evolvableIFS\CD_bundle\src\evolveIFS\run.py

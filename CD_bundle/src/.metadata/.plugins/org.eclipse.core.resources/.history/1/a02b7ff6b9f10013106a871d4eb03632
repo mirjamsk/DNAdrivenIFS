@@ -22,7 +22,7 @@ class Fitness(object):
         except IOError:
             print "Error in Population.__init__: File2 does not appear to exist."
             
-        ## dictionary mapping all codons to it's index {"CCC": 0, "CCG": 1, ..., "TTT"= 64}
+             ## dictionary mapping all codons to it's index {"CCC": 0, "CCG": 1, ..., "TTT"= 64}
         codon = list(itertools.product('CGAT', repeat= 3))
         self.codonDict = dict(zip([codon[i][0]+codon[i][1]+codon[i][2] for i in range(0, len(codon))], [i for i in range(0, 64)]))
     
@@ -58,7 +58,7 @@ class Fitness(object):
   
 class ManhattanDistFit (Fitness):
     def __init__(self, file1, file2):
-        super(ManhattanDistFit, self).__init__( file1, file2)  
+          super(ManhattanDistFit, self).__init__( file1, file2)  
           
     def evaluate(self, individual):
         median1 = self.calcMedian( individual, self.codons1 )
@@ -72,7 +72,7 @@ class ManhattanDistFit (Fitness):
   
 class EuclideanDistFit (Fitness):
     def __init__(self, file1, file2):
-        super(EuclideanDistFit, self).__init__( file1, file2)  
+          super(EuclideanDistFit, self).__init__( file1, file2)  
           
     def evaluate(self, individual):
         median1 = self.calcMedian( individual, self.codons1 )
@@ -86,9 +86,9 @@ class EuclideanDistFit (Fitness):
     
 class LinearInterpolation (Fitness):
     def __init__(self, file1, file2, euclFact, manhFact):
-        super(LinearInterpolation, self).__init__( file1, file2)  
-        self.euclFact = euclFact
-        self.manhFact = manhFact
+          super(LinearInterpolation, self).__init__( file1, file2)  
+          self.euclFact = euclFact
+          self.manhFact = manhFact
           
           
     def evaluate(self, individual):

@@ -118,8 +118,8 @@ class argsParser(object):
         if self.batch == 1:
             print "Output file: " +             self.outputFile 
         else: 
-            print "Output file: output/similitude_n.txt" 
-            print "Log file: output/log.txt"
+             print "Output file: output/similitude_n.txt" 
+             print "Log file: output/log.txt"
         print "Number of Generations: %d "  %self.numberOfGenerations 
         print "Population size: %d "        %self.populationSize
         print "Crossover factor: %.3f "     %self.crossoverFactor 
@@ -131,5 +131,5 @@ class argsParser(object):
             print "Eucld dist factor: %.3f"   %self.euclF
             print "Manh dist factor: %.3f"    %self.manhF
         elif self.fitnessFunction == "minkowski":
-            print "p: %.3f"                  %self.p
+             print "p: %.3f"                  %self.p
        

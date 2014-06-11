@@ -1,3 +1,8 @@
+'''
+Created on 8. 4. 2014.
+
+@author: Monsieur
+'''
 from Individual import Individual 
 import random
 class Crossover(object):
