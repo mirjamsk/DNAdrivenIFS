@@ -1,4 +1,4 @@
-windows scr i app  za vizualizaciju DNA podataka
+windows src i app  za vizualizaciju DNA podataka
 ---
 
 
@@ -10,9 +10,9 @@ windows scr i app  za vizualizaciju DNA podataka
  + DNAsequence2.txt	
  + IFSsimilitude.txt
 + pics/   <sup>*izlaz</sup>
- + singleDNA.tif
- + bothDNA.tif
-
+ + singleDNA.png
+ + bothDNA.png
++ * .pde (implementacija)
 <br>
 
 #####Čemu i kako?
