@@ -15,21 +15,16 @@ void setup() {
     IFSfractal ifs = new IFSfractal(p.getSimilitudes(), p.getIndexes(), "HumanPapillomavirusType41-markov.txt",color(10,200,255));
     IFSfractal ifs1 = new IFSfractal(p.getSimilitudes(), p.getIndexes(), "HelicobacterPylori2017-markov.txt", color( 255, 120, 10));
     
-    
     //boundscheck
     setBounds(ifs, ifs1);
     
-    
     ifs.drawFractal();
-   
     save("pics/HPV-Helico-euclidean/similitude"+i+"_1.png"); 
-    ifs1.drawFractal();
     
+    ifs1.drawFractal();    
     filter(DILATE);
     filter(BLUR,0.7);
  
-//    fill(0, 30);
-//    rect(0,0, width, height);
     save("pics/HPV-Helico-euclidean/similitude"+i+"_2.png"); 
   
   }

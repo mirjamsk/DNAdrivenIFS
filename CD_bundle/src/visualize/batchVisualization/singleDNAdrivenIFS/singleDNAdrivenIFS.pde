@@ -12,7 +12,7 @@ void setup() {
     Parser p = new Parser("randomSimili/similitude"+i+".txt");
     p.parse();
     
-    IFSfractal ifs = new IFSfractal(p.getSimilitudes(), p.getIndexes(), "randomDNA.txt");
+    IFSfractal ifs = new IFSfractal(p.getSimilitudes(), p.getIndexes(), "randomSequence.txt");
     ifs.drawFractal();
     
     filter(DILATE);
