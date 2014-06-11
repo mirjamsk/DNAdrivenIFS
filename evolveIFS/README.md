@@ -37,7 +37,7 @@ Za konfiguriranje pokretanja, dovoljno je promijeniti parametre u datoteci ***ar
 
 
 ##### Imam izlaz, što s njim?
-U datoteku definiranu unutar čvora `<OutputFile>` bit će ispisana najbolja jedinka. Taj ***izlaz*** je ujedno i ***ulaz*** u program koji crta fraktale.
+U datoteku definiranu unutar čvora `<OutputFile>` bit će ispisana najbolja [jedinka](https://github.com/mirjamsk/DNAdrivenIFS/tree/master/evolveIFS#implementacija-jedinke). Taj ***izlaz*** je ujedno i ***ulaz*** [u program koji crta fraktale](https://github.com/mirjamsk/DNAdrivenIFS/blob/master/appDNAdrivenIFS)
 Više o implemenaciji jedinke u slijedećem paragfau.
 
 <br>
