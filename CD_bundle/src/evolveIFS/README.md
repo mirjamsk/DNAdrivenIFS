@@ -1,4 +1,4 @@
-genetic alg for evolving IFS 
+Genetski algoritam za pretragu mogućih IFS fraktala
 ==
 
 <br>
