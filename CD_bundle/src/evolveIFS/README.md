@@ -27,9 +27,12 @@ Za konfiguriranje pokretanja, dovoljno je promijeniti parametre u datoteci ***ar
 	<PopulationSize> 100 </PopulationSize>
 	<CrossoverFactor> 0.3 </CrossoverFactor>
 	<MutationFactor> 0.5 </MutationFactor>
-	<FitnessFunction>  manhattan </FitnessFunction> <!-- possible: manhattan, euclidean -->
+	<FitnessFunction>  manhattan </FitnessFunction> <!-- possible: manhattan, euclidean, linear -->
+	<euclFactor> 0.6 </euclFactor>					<!-- in case linear interpolation chosen -->
+    <manhFactor> 0.4 </manhFactor>					<!-- in case linear interpolation chosen -->
 	<Selection>  elimination </Selection>           <!-- possible: elimination, tournament -->
 	<Elitism> 1 </Elitism>                          <!-- possible: 0,1 -->
+	<Batch>30</Batch>								<!-- batch run possibility -->
 </args>
 ```
 

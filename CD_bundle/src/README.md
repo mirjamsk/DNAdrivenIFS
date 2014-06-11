@@ -6,9 +6,9 @@ vizualizacija DNA podataka IFS fraktalima
  + evolveIFS: *implementacija genetskog algoritma za evoluciju IFS fraktala*
  + helpers:  *sripte*
   + 	za ciscenje datoteke od svega što nije DNA podatak
-  + 	za generiranje Markovog modela DNA podataka
+  + 	za generiranje Markovljevog modela DNA podataka
   + 	za generiranje random DNA niza
- + visualize_batch_DNAdrivenIFS: *source code programa koji crta fraktale*
+ + visualize: *source code programa koji crta fraktale*
 
 <sub>* Detaljnije informacije i upute za korištenje  nalaze se u odgovarajucim poddirektorijima</sub>
  
