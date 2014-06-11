@@ -2,7 +2,7 @@ windows scr i app  za vizualizaciju DNA podataka
 ---
 
 
-#### Što je bitno u repozitoriju?
+#### Što je bitno u direktoriju?
 + application.windows.32/
 + application.windows.64/
 + data/ <sup>*ulaz</sup>
