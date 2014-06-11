@@ -2,7 +2,7 @@ vizualizacija DNA podataka IFS fraktalima
 ---
 
 
-##### Što je u repozitoriju?
+##### Što je u direktoriju?
  + evolveIFS: *implementacija genetskog algoritma za evoluciju IFS fraktala*
  + helpers:  *sripte*
   + 	za ciscenje datoteke od svega što nije DNA podatak
