@@ -1,4 +1,4 @@
-Genetski algoritam za pretragu prostora mogucih IFS fraktala
+Implementacija genetskog algoritma za evoluciju IFS fraktala
 --
 
 <br>
