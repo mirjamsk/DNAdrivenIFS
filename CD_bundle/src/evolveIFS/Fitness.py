@@ -122,51 +122,5 @@ class MinkowskiDistFit(Fitness):
         return  (point1[0]-point2[0])**self.p + (point1[1]-point2[1])**self.p
    
     
-class MeanFit(EuclideanDistFit):
-    def __init__(self, file1, file2):
-        super(MeanFit, self).__init__( file1, file2)  
-        
-    def evaluate(self, individual):
-        median1 = self.calcMedian( individual, self.codons1 )
-        median2 = self.calcMedian ( individual, self.codons2 )
-        #print "median1: ", median1, "median2:", median2
-        scale = self.checkClustering(individual, median1, median2)
-        individual.setFitness(self.euclideanDistance(median1, median2) * scale *0.5)     
-    
-            
-    def checkClustering(self, individual, median1, median2):
-        scale1 = self.getScale(individual, median1, median2, self.codons1)
-        scale2 = self.getScale(individual, median2, median1, self.codons2)
-        return scale1 if scale1<scale2 else scale2;
-        
-        
-    def getScale(self, individual, medianSelf, medianOther ,codons):
-        px = 0
-        py = 0
-        diffSelf = 0
-        diffOther = 0
-        diffCurr = sys.maxint;
-        scale = 1;
-        for codon in codons:
-            if codon not in self.codonDict.keys():
-                continue
-            similitude = individual.getSingleSimilitude(individual.getIndexElement(self.codonDict[codon]))
-            rad = similitude[0]
-            translateX = similitude[1]
-            translateY = similitude[2]
-            scale = similitude[3]
-            x = px;
-            y = py;
-            px = scale *(x*math.cos(rad)- y*math.sin(rad) + translateX)
-            py = scale *(x*math.sin(rad)+ y*math.cos(rad) + translateY)
-            diffSelf = self.euclideanDistance((px,py),medianSelf)
-            diffOther = self.euclideanDistance((px,py),medianOther)
-            if ( diffOther <= diffSelf and  diffOther < diffCurr ):
-                diffCurr = diffOther;
-                scale = diffOther/diffSelf;
-                #print "diff other: ",  diffOther,  "DiffSelf: ",  diffSelf ,  "scale ", scale;
-            return scale;
-                             
-
 
     

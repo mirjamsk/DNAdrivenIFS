@@ -1,6 +1,6 @@
 from Population import Population
 import random
-from Fitness import Fitness, ManhattanDistFit, EuclideanDistFit, MinkowskiDistFit, MeanFit, LinearInterpolation
+from Fitness import Fitness, ManhattanDistFit, EuclideanDistFit, MinkowskiDistFit, LinearInterpolation
 from Crossover import Crossover
 from Selection import Selection
 from Mutation import Mutation
@@ -85,7 +85,6 @@ def main():
     args.parse('args.xml')
     if   args.fitnessFunction == "euclidean" : fitOp = EuclideanDistFit(args.input1, args.input2)
     elif args.fitnessFunction == "manhattan" : fitOp = ManhattanDistFit(args.input1, args.input2)
-    elif args.fitnessFunction == "mean"      : fitOp = MeanFit(args.input1, args.input2)
     elif args.fitnessFunction == "minkowski" : fitOp = MinkowskiDistFit(args.input1, args.input2, args.p)
     elif args.fitnessFunction == "linear"    : fitOp = LinearInterpolation(args.input1, args.input2, args.euclF, args.manhF)
     else : raise "Something went wrong while assigning the fitness function"

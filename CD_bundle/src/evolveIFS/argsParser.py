@@ -83,7 +83,7 @@ class argsParser(object):
     
     
     def assignFitnessFunction(self, inputStr):
-        if inputStr == "euclidean" or inputStr == "manhattan" or inputStr == "minkowski" or inputStr == "mean"  or inputStr == "linear":
+        if inputStr == "euclidean" or inputStr == "manhattan" or inputStr == "minkowski"  or inputStr == "linear":
             self.fitnessFunction = inputStr
         else :
             self.fitnessFunction = "euclidean"
